@@ -5,7 +5,6 @@
  */
 function applyCustomSort() {
   [].__proto__.sort2 = function (compareFunction) {
-    // Função de comparação padrão (ordem lexicográfica)
     const defaultCompare = (a, b) => {
       const aStr = String(a);
       const bStr = String(b);
@@ -14,8 +13,6 @@ function applyCustomSort() {
     };
 
     const compare = compareFunction || defaultCompare;
-
-    // Implementação do Merge Sort
     const mergeSort = (array) => {
       if (array.length <= 1) {
         return array;
@@ -43,14 +40,11 @@ function applyCustomSort() {
         }
       }
 
-      // Adiciona os elementos restantes
       return result.concat(left.slice(i)).concat(right.slice(j));
     };
 
-    // Ordena o array original usando Merge Sort
     const sortedArray = mergeSort([...this]);
 
-    // Substitui os valores do array original pelos valores ordenados
     for (let i = 0; i < this.length; i++) {
       this[i] = sortedArray[i];
     }
